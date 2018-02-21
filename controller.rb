@@ -5,25 +5,30 @@ require_relative('./models/string_check.rb')
 
 get '/check/:s1/:s2' do
   inputs = String_check.new(params[:s1].to_s, params[:s2].to_s)
-  return inputs.check_two_strings
+  @result = inputs.check_two_strings
+  erb(:result)
 end
 
 get '/length/:s1/:s2' do
   inputs = String_check.new(params[:s1].to_s, params[:s2].to_s)
-  return inputs.check_length
+  @result = inputs.check_length
+  erb(:result)
 end
 
 get '/palindrome/:s1' do
   string = String_check.new(params[:s1].to_s)
-  return string.palindrome
+  @result = string.palindrome
+  erb(:result)
 end
 
 get '/isogram/:s1' do
   string = String_check.new(params[:s1].to_s)
-  return string.isogram
+  @result = string.isogram
+  erb(:result)
 end
 
 get '/anagram/:s1/:s2' do
   string = String_check.new(params[:s1].to_s, params[:s2])
-  return string.anagram
+  @result = string.anagram
+  erb(:result)
 end
